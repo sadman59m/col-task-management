@@ -1,0 +1,17 @@
+.user-container {
+  max-width: 30rem;
+  margin: 8rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.user-container h1 {
+  margin: 0.1rem 0.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.user-container h3 {
+  margin: 0.5rem 0.1rem;
+}

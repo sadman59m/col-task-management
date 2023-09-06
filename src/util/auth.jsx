@@ -1,11 +1,10 @@
 import { redirect } from "react-router-dom";
 
-function getToken() {
+export function getToken() {
   const token = localStorage.getItem("token");
   if (!token) {
     return null;
   }
-  console.log(token);
   return token;
 }
 
