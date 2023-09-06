@@ -1,0 +1,38 @@
+.singup-form {
+  max-width: 30rem;
+  width: 90%;
+  margin: 8rem auto;
+}
+
+.singup-form label,
+.singup-form input {
+  display: block;
+  width: 100%;
+}
+
+.singup-form label {
+  font-size: 1.3rem;
+  margin: 0.5rem 0;
+  font-weight: 500;
+}
+
+.singup-form input {
+  padding: 0.5rem 0.75rem;
+  font-size: 1.2rem;
+  width: 95%;
+}
+
+.singup-action {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.singup-action button {
+  font-size: 1.3rem;
+  background: transparent;
+  cursor: pointer;
+}
+
+.error-msg {
+  color: red;
+}
