@@ -1,6 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 // import { redirect } from "react-router-dom";
 // import { redirect } from "react-router-dom";
+import { redirect } from "react-router-dom";
 import Login from "../components/auth/Login";
 import {
   emailValidator,
@@ -30,7 +31,7 @@ export async function action({ request }) {
 
   if (detectUser(email) && passwordChecker(email, password)) {
     localStorage.setItem("token", email);
-    return new Response("login success");
+    return redirect("/");
   } else {
     return new Response("invalid user credintials.");
   }

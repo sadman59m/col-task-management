@@ -3,9 +3,12 @@ function getToken() {
   if (!token) {
     return null;
   }
+  console.log(token);
   return token;
 }
 
 export function loader() {
-  return getToken();
+  const token = getToken();
+
+  return token;
 }
