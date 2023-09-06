@@ -8,7 +8,7 @@ import SignupPage from "./pages/SingupPage";
 import { action as singupAction } from "./pages/SingupPage";
 import { action as loignAction } from "./pages/LoginPage";
 import { action as logoutAction } from "./pages/Logout";
-import { loader as tokenLoader } from "./util/auth";
+import { loader as tokenLoader, authCheck } from "./util/auth";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +33,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/logout",
+        loader: authCheck,
         action: logoutAction,
       },
     ],

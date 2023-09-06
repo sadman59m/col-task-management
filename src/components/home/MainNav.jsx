@@ -5,8 +5,6 @@ import classes from "./MainNav.module.css";
 const MainNav = () => {
   const token = useRouteLoaderData("root");
 
-  console.log(token);
-
   return (
     <header className={classes["nav-header"]}>
       <nav className={classes["nav-main"]}>
