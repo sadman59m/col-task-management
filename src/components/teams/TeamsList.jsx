@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import classes from "./TeamsList.module.css";
 import { useState } from "react";
 import ModalPrimary from "../UI/ModalPrimary";
+import CreateTeamForm from "./CreateTeamForm";
 
 const TeamsList = () => {
   const [openCreateTeam, setOpenCreateTeam] = useState(false);
@@ -23,7 +24,7 @@ const TeamsList = () => {
         )}
         {openCreateTeam && (
           <ModalPrimary onClose={openCreateTeamHandler}>
-            <h1>LOsts of hingsks</h1>
+            <CreateTeamForm onClose={openCreateTeamHandler} />
           </ModalPrimary>
         )}
         <h2>Your teams</h2>

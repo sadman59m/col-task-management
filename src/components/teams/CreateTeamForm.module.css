@@ -1,0 +1,37 @@
+.team-form {
+  max-width: 20rem;
+  margin: 1rem;
+}
+
+.team-form label,
+.team-form input {
+  display: block;
+  width: 100%;
+}
+
+.team-form label {
+  font-size: 1.3rem;
+  margin: 0.5rem 0;
+  font-weight: 500;
+}
+
+.team-form input {
+  padding: 0.5rem 0.75rem;
+  font-size: 1.2rem;
+  width: 95%;
+}
+
+.team-action {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.team-action button {
+  font-size: 1.3rem;
+  background: transparent;
+  cursor: pointer;
+}
+
+.error-msg {
+  color: red;
+}

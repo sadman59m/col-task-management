@@ -12,10 +12,6 @@ const ModalPrimary = ({ children, onClose }) => {
       <div className={classes.backdrop} onClick={onCloseHandler}></div>
       <div className={classes["modal-contailer"]}>
         <div className={classes["modal-content"]}>{children}</div>
-        <div className={classes["modal-action"]}>
-          <button>save</button>
-          <button onClick={onCloseHandler}>close</button>
-        </div>
       </div>
     </>,
     document.getElementById("overlay")
