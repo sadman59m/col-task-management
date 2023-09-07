@@ -4,18 +4,18 @@ import { createSlice } from "@reduxjs/toolkit";
 const teamsSlice = createSlice({
   name: "teams",
   initialState: {
-    members: [],
-    tasks: [],
-    creator: "",
+    teams: [],
     changed: false,
   },
   reducers: {
     createTeam(state, action) {
-      //func body
-      return null;
+      const newTeamItem = action.payload;
+      console.log(newTeamItem);
+      state.teams = state.teams.concat(newTeamItem);
+      state.changed = true;
     },
   },
 });
 
-export const teamsAction = teamsSlice.actions;
+export const teamsActions = teamsSlice.actions;
 export default teamsSlice;

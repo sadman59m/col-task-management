@@ -82,7 +82,7 @@ export async function action({ request }) {
   localStorage.setItem("users", JSON.stringify(users));
 
   toast.success("Sinup Successful.", {
-    position: "bottom-left",
+    position: "top-center",
     autoClose: 2000,
   });
 

@@ -29,8 +29,13 @@
 
 .singup-action button {
   font-size: 1.3rem;
-  background: transparent;
   cursor: pointer;
+  border: 1.5px solid var(--primary-color);
+  border-radius: 6px;
+  background-color: var(--primary-color);
+  padding: 0.5rem 0.75rem;
+  color: white;
+  margin-left: 0.75rem;
 }
 
 .error-msg {

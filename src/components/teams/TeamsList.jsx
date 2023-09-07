@@ -20,7 +20,12 @@ const TeamsList = () => {
     <>
       <div className={classes["teamlist-container"]}>
         {!openCreateTeam && (
-          <button onClick={openCreateTeamHandler}>Create New Team</button>
+          <button
+            className={classes["newteam-btn"]}
+            onClick={openCreateTeamHandler}
+          >
+            Create New Team
+          </button>
         )}
         {openCreateTeam && (
           <ModalPrimary onClose={openCreateTeamHandler}>
