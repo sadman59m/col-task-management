@@ -23,9 +23,15 @@ const User = ({ username, email, bio }) => {
               onClose={isEditHandler}
               setBioData={setBioData}
               email={email}
+              bio={bioData ? bioData : bio}
             />
           )}
-          <button onClick={isEditHandler}>edit bio</button>
+          {!isEdit && (
+            <button onClick={isEditHandler}>{`${
+              bio || bioData ? "edit bio" : "add bio"
+            }`}</button>
+          )}
+
           <p>{bioData ? bioData : bio}</p>
         </div>
       </div>

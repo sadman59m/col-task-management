@@ -12,6 +12,7 @@ import { action as loignAction } from "./pages/LoginPage";
 import { action as logoutAction } from "./pages/Logout";
 import { loader as tokenLoader, authCheck } from "./util/auth";
 import UserPage, { loader as userLoader } from "./pages/UserPage";
+import Landing from "./pages/LandingPage";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />,
+        element: <Landing />,
       },
       {
         path: "/user",

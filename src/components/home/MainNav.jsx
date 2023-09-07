@@ -11,8 +11,13 @@ const MainNav = () => {
         <div>
           <ul className={classes["nav-ul"]}>
             <li>
-              <NavLink to="/teams">teams</NavLink>
+              <NavLink to="/">home</NavLink>
             </li>
+            {token && (
+              <li>
+                <NavLink to="/teams">teams</NavLink>
+              </li>
+            )}
           </ul>
         </div>
         <div>

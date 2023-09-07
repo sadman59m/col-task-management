@@ -4,6 +4,7 @@ export function getUserData(email) {
     const existingUser = users.find((user) => user.email === email);
     return existingUser;
   }
+  return null;
 }
 
 export function setUserData(userData) {
@@ -15,9 +16,10 @@ export function setUserData(userData) {
       (user) => user.email === userData.email
     );
     const existingUser = updatedUsers[existingUserIndex];
-    console.log(existingUser);
-    let updatedUser = userData;
+    let updatedUser = { ...existingUser };
+    updatedUser = userData;
     updatedUsers[existingUserIndex] = updatedUser;
     localStorage.setItem("users", JSON.stringify(updatedUsers));
   }
+  return null;
 }
