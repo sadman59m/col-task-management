@@ -4,8 +4,7 @@ import classes from "./Signup.module.css";
 const Singup = () => {
   const jsonData = useActionData();
 
-  console.log("rendingin");
-
+  // getting message and status code returned from the signup action
   let msg;
   let code;
   if (jsonData) {

@@ -1,10 +1,10 @@
-import { Form, NavLink, useRouteLoaderData } from "react-router-dom";
+import { Form, NavLink } from "react-router-dom";
 
 import classes from "./MainNav.module.css";
+import { getToken } from "../../util/auth";
 
 const MainNav = () => {
-  const token = useRouteLoaderData("root");
-
+  const token = getToken();
   return (
     <header className={classes["nav-header"]}>
       <nav className={classes["nav-main"]}>

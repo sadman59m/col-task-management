@@ -13,17 +13,25 @@ import { action as logoutAction } from "./pages/Logout";
 import { loader as tokenLoader, authCheck } from "./util/auth";
 import UserPage, { loader as userLoader } from "./pages/UserPage";
 import Landing from "./pages/LandingPage";
+import Teams from "./pages/TeamsPage";
+import ErrorPage from "./pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
+    errorElement: <ErrorPage />,
     id: "root",
     loader: tokenLoader,
     children: [
       {
         index: true,
         element: <Landing />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "/teams",
+        element: <Teams />,
       },
       {
         path: "/user",
