@@ -1,0 +1,16 @@
+.teamitem-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.teamitem-head {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.teamitem-sub {
+  font-size: 1rem;
+  display: flex;
+  gap: 1rem;
+}

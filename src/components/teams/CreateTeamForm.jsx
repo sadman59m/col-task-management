@@ -15,7 +15,6 @@ const CreateTeamForm = ({ onClose }) => {
 
   // excuting the getToken() fn for the email and get user info uisng the email
   const userInfo = getUserData(getToken());
-  console.log(userInfo);
 
   //handle form submittion
   const onCloseHandler = () => {
@@ -36,13 +35,13 @@ const CreateTeamForm = ({ onClose }) => {
     const newTeam = {
       id: newTeamId,
       title: teamTitle,
-      cretorId: userInfo.email,
+      creatorId: userInfo.email,
       creatorName: userInfo.userName,
       members: [],
       tasks: [],
     };
     // push into state
-    dispatch(teamsActions.createTeam(newTeam));
+    dispatch(teamsActions.createNewTeam(newTeam));
     titleRef.current.value = "";
     onClose();
   };

@@ -8,9 +8,13 @@ const teamsSlice = createSlice({
     changed: false,
   },
   reducers: {
-    createTeam(state, action) {
+    replaceTeams(state, payload) {
+      const teams = payload.teams || [];
+      state.teams = teams;
+      state.changed = false;
+    },
+    createNewTeam(state, action) {
       const newTeamItem = action.payload;
-      console.log(newTeamItem);
       state.teams = state.teams.concat(newTeamItem);
       state.changed = true;
     },

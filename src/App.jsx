@@ -32,6 +32,7 @@ const router = createBrowserRouter([
       {
         path: "/teams",
         element: <Teams />,
+        loader: authCheck,
       },
       {
         path: "/user",
