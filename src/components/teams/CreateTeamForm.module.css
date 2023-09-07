@@ -24,6 +24,8 @@
 .team-action {
   display: flex;
   justify-content: flex-end;
+  padding-top: 1rem;
+  padding-bottom: 0;
 }
 
 .team-action button {

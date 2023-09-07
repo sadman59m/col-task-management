@@ -1,8 +1,15 @@
-.teamitem-list {
+.teamitem-list a {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
 }
+
+/* .teamitem-list a:hover {
+  transform: scale(1.1) translateY(-1rem);
+} */
 
 .teamitem-head {
   font-size: 1.3rem;
@@ -13,4 +20,9 @@
   font-size: 1rem;
   display: flex;
   gap: 1rem;
+}
+
+p {
+  color: #333;
+  margin: 0;
 }

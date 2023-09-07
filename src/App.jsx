@@ -15,6 +15,7 @@ import UserPage, { loader as userLoader } from "./pages/UserPage";
 import Landing from "./pages/LandingPage";
 import Teams from "./pages/TeamsPage";
 import ErrorPage from "./pages/ErrorPage";
+import TeamPage, { loader as teamDetailLoader } from "./pages/TeamPage";
 
 const router = createBrowserRouter([
   {
@@ -31,8 +32,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/teams",
-        element: <Teams />,
         loader: authCheck,
+        children: [
+          {
+            index: true,
+            element: <Teams />,
+          },
+          {
+            path: ":teamId",
+            element: <TeamPage />,
+            id: "team-details",
+            loader: teamDetailLoader,
+          },
+        ],
       },
       {
         path: "/user",

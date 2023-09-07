@@ -8,10 +8,12 @@ import CreateTeamForm from "./CreateTeamForm";
 import TeamItem from "./TeamItem";
 import { getToken } from "../../util/auth";
 import { getTeams, setTeams } from "../../store/teams-action";
+import { useNavigate } from "react-router-dom";
 
 const TeamsList = () => {
   const [openCreateTeam, setOpenCreateTeam] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   // fetch all teams from redux state
   // dispatch to handle actions
   const stateTeams = useSelector((state) => state.teams);
@@ -29,9 +31,17 @@ const TeamsList = () => {
   }, [stateTeams, dispatch]);
 
   const teams = allTeams.filter((team) => team.creatorId === token);
-  //   const memberTeams = allTeams.forEach((team) =>
-  //     team.members.filter((member) => member.id === token)
-  //   );
+  const memberTeams = [];
+
+  // find all the teams where current user is part of
+  allTeams.forEach((team) =>
+    team.members.forEach((member) => {
+      if (member === token) {
+        memberTeams.push(team);
+      }
+    })
+  );
+  console.log(memberTeams);
 
   const openCreateTeamHandler = () => {
     setOpenCreateTeam((prevState) => !prevState);

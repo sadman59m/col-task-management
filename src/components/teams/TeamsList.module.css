@@ -22,12 +22,17 @@
 }
 
 .teamlist-li {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   padding: 0.5rem;
   border-bottom: 2px solid #555;
   width: 100%;
   text-align: center;
   cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+.teamlist-li:hover {
+  transform: scale(1.05);
 }
 
 .teamlist-modal {

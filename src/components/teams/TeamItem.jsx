@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import { useRouteLoaderData } from "react-router-dom";
+import { Link, NavLink, useRouteLoaderData } from "react-router-dom";
 import classes from "./TeamItem.module.css";
 
 const TeamItem = ({
@@ -15,12 +15,14 @@ const TeamItem = ({
 
   return (
     <li className={`${classes["teamitem-list"]} ${className}`}>
-      <div className={classes["teamitem-head"]}>{title}</div>
-      <div className={classes["teamitem-sub"]}>
-        <div>{`Created by: ${creator}`}</div>
-        <div>{`Tasks: ${taskNumber}`}</div>
-        <div>{`Members: ${memberNumber}`}</div>
-      </div>
+      <Link to={id}>
+        <p className={classes["teamitem-head"]}>{title}</p>
+        <div className={classes["teamitem-sub"]}>
+          <p>{`Created by: ${creator}`}</p>
+          <p>{`Tasks: ${taskNumber}`}</p>
+          <p>{`Members: ${memberNumber}`}</p>
+        </div>
+      </Link>
     </li>
   );
 };
