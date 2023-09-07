@@ -6,7 +6,13 @@ import { getUserData } from "../util/userInfo";
 
 const UserPage = () => {
   const userData = useLoaderData();
-  return <User username={userData.userName} email={userData.email} />;
+  return (
+    <User
+      username={userData.userName}
+      email={userData.email}
+      bio={userData.bio ? userData.bio : ""}
+    />
+  );
 };
 
 export default UserPage;

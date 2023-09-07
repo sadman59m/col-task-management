@@ -29,7 +29,7 @@ const MainNav = () => {
             )}
             {token && (
               <li>
-                <NavLink to="/user">user</NavLink>
+                <NavLink to="/user">profile</NavLink>
               </li>
             )}
 

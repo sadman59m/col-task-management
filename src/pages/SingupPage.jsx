@@ -1,12 +1,19 @@
 /* eslint-disable react-refresh/only-export-components */
 
-import { redirect } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
+// import { redirect } from "react-router-dom";
 import Singup from "../components/auth/Signup";
+import { toast } from "react-toastify";
 
 import { emailValidator, detectUser } from "../util/inputValidator";
+import { redirect } from "react-router-dom";
 
 const SignupPage = () => {
-  return <Singup />;
+  return (
+    <>
+      <Singup />
+    </>
+  );
 };
 
 export default SignupPage;
@@ -23,14 +30,26 @@ export async function action({ request }) {
   // input data validation
   if (userName.length < 3) {
     // error response to the useActionData in the /signup route
-    return new Response("Username must be at least 3 characters.");
+    return new Response(
+      JSON.stringify({
+        message: "Username must be at least 3 characters.",
+        status: 420,
+      })
+    );
   }
   if (emailValidator(email)) {
-    return new Response("invalid email");
+    return new Response(
+      JSON.stringify({ message: "Invalid email", status: 420 })
+    );
   }
 
   if (password.length < 4) {
-    return new Response("Password must be at least 4 characters.");
+    return new Response(
+      JSON.stringify({
+        message: "Password must be at least 4 characters.",
+        status: 420,
+      })
+    );
   }
 
   const newUser = {
@@ -48,11 +67,34 @@ export async function action({ request }) {
   }
 
   if (detectUser(email)) {
-    return new Response("User already exist. Provide another email.");
+    return new Response(
+      JSON.stringify({
+        message: "User already exist. Provide another email.",
+        status: 420,
+      }),
+      {
+        status: 200,
+      }
+    );
   }
 
   users.push(newUser);
   localStorage.setItem("users", JSON.stringify(users));
 
+  toast.success("Sinup Successful.", {
+    position: "bottom-left",
+    autoClose: 2000,
+  });
+
   return redirect("/login");
+
+  // return new Response(
+  //   JSON.stringify({
+  //     message: "signup success. Login to continue",
+  //     status: 200,
+  //   }),
+  //   {
+  //     status: 200,
+  //   }
+  // );
 }

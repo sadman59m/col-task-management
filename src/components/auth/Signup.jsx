@@ -2,12 +2,22 @@ import { Form, useActionData } from "react-router-dom";
 import classes from "./Signup.module.css";
 
 const Singup = () => {
-  const errorData = useActionData();
+  const jsonData = useActionData();
+
+  console.log("rendingin");
+
+  let msg;
+  let code;
+  if (jsonData) {
+    msg = JSON.parse(jsonData).message;
+    code = JSON.parse(jsonData).status;
+  }
 
   return (
     <>
       <Form method="post" className={classes["singup-form"]}>
-        {errorData && <p className={classes["error-msg"]}>{errorData}</p>}
+        {/* {code === 200 && <p className={classes["success-msg"]}>{msg}</p>} */}
+        {code === 420 && <p className={classes["error-msg"]}>{msg}</p>}
         <p>
           <label htmlFor="username">Username</label>
           <input id="username" type="text" name="username" />
