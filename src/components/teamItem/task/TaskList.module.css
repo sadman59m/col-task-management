@@ -27,3 +27,8 @@
   padding: 2rem;
   padding-left: 1rem;
 }
+
+.tasklist-ul {
+  max-width: 100%;
+  width: 100%;
+}

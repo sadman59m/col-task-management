@@ -32,9 +32,9 @@ const TaskList = ({ tasks, teamId }) => {
             <NewTaskForm onClose={openNewTaskHandler} teamId={teamId} />
           </ModalPrimary>
         )}
-        <h2>Tasks</h2>
+        <h2>All Tasks</h2>
         {tasks.length <= 0 && <h3>No available tasks to show.</h3>}
-        <ul className={classes["teamlist-ul"]}>
+        <ul className={classes["tasklist-ul"]}>
           {tasks.length > 0 &&
             tasks.map((item, index) => {
               return (

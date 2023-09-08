@@ -96,7 +96,7 @@ const NewTaskForm = ({ onClose, teamId }) => {
       </div>
       <div>
         <label htmlFor="description">Task Description</label>
-        <input id="description" name="description" ref={descRef} />
+        <textarea id="description" type="" name="description" ref={descRef} />
         {descError && descErrorContent}
       </div>
       <div>
