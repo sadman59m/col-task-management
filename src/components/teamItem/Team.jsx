@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { FaUserPlus, FaUsers } from "react-icons/fa6";
 
 import { getTeams, setTeams } from "../../store/teams-action";
 import Members from "./teamMember/Members";
@@ -57,9 +58,16 @@ const Team = ({ team }) => {
             <div className={classes["all-members"]}>
               {
                 <button
-                  className={classes["member-btn"]}
+                  className={classes["addmember-btn"]}
                   onClick={showMembersHandler}
-                >{`Show all members (${teamMembers.length})`}</button>
+                >
+                  <div className={classes["addmember-icon-container"]}>
+                    <FaUsers className={classes["addmember-icon"]} />
+                    <p className={classes["addmember-icon-p"]}>
+                      {teamMembers.length}
+                    </p>
+                  </div>
+                </button>
               }
               {showMembers && (
                 <>
@@ -78,9 +86,11 @@ const Team = ({ team }) => {
             <div className={classes["all-members"]}>
               {
                 <button
-                  className={classes["member-btn"]}
+                  className={classes["addmember-btn"]}
                   onClick={showAddMembersHandler}
-                >{`Add New Member`}</button>
+                >
+                  <FaUserPlus className={classes["addmember-icon"]} />
+                </button>
               }
               {showAddMembers && (
                 <ModalPrimary
