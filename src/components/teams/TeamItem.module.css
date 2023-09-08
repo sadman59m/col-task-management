@@ -1,10 +1,19 @@
-.teamitem-list a {
+/* a {
+  text-decoration: none;
+  color: #333;
+} */
+
+.teamitem-list {
   display: flex;
   justify-content: space-between;
   align-items: center;
   text-decoration: none;
   margin: 0;
   padding: 0;
+  gap: 3rem;
+  border-bottom: 2px solid #555;
+  margin: 0.5rem 0rem;
+  margin-top: 1rem;
 }
 
 /* .teamitem-list a:hover {
@@ -14,15 +23,78 @@
 .teamitem-head {
   font-size: 1.3rem;
   font-weight: 600;
+  text-align: start;
+  flex: 1;
 }
 
 .teamitem-sub {
   font-size: 1rem;
   display: flex;
-  gap: 1rem;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex: 1;
+  gap: 0.25rem;
+}
+.teamitem-sub-detail .p {
+  display: inline;
+  font-weight: 700;
+}
+.teamitem-sub-detail .pbold {
+  font-weight: 700;
 }
 
-p {
-  color: #333;
-  margin: 0;
+.teamitem-action {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.goto-btn {
+  cursor: pointer;
+  color: white;
+  background: var(--primary-color);
+  padding: 0.5rem 0.75rem;
+  border-radius: 12px;
+  border: 1px solid var(--primary-color);
+  margin: 0.25rem 0;
+  font-weight: 700;
+  transition: all 0.2s linear;
+}
+
+.goto-btn:hover {
+  background: white;
+  color: var(--primary-color);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+.delete-btn {
+  cursor: pointer;
+  color: red;
+  background: transparent;
+  padding: 0.5rem 0.75rem;
+  border-radius: 12px;
+  border: 1px solid red;
+  margin: 0.25rem 0;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  transition: all 0.2s linear;
+}
+
+.delete-btn:hover {
+  background-color: red;
+  color: white;
+}
+
+.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.disabled:hover {
+  color: red;
+  background: fixed;
 }

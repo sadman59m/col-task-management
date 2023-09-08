@@ -96,6 +96,9 @@ const Team = ({ team }) => {
               )}
             </div>
           </div>
+          <div className={classes.title}>
+            <p>{`${team.title}`}</p>
+          </div>
           <div className={classes.creator}>
             <p>{`Created by: ${team.creatorName}`}</p>
           </div>

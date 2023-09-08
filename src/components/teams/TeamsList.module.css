@@ -27,16 +27,15 @@
   border-bottom: 2px solid #555;
   width: 100%;
   text-align: center;
-  cursor: pointer;
-  transition: all 0.2s linear;
 }
 
-.teamlist-li:hover {
+/* .teamlist-li:hover {
   transform: scale(1.05);
-}
+} */
 
 .teamlist-modal {
-  width: 30rem;
+  max-width: 30rem;
+  width: 90%;
 }
 
 .newteam-btn {
@@ -48,5 +47,12 @@
   padding: 0.5rem 0.75rem;
   color: white;
   margin-left: 0.75rem;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+  /* box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5); */
+  transition: all 0.2s linear;
+}
+
+.newteam-btn:hover {
+  background: white;
+  color: var(--primary-color);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
 }

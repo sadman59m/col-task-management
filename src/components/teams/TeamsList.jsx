@@ -79,6 +79,7 @@ const TeamsList = () => {
                   id={item.id}
                   title={item.title}
                   creator={item.creatorName}
+                  creatorEmail={item.creatorId}
                   memberNumber={item.members.length}
                   taskNumber={item.tasks.length}
                 />

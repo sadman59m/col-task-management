@@ -71,6 +71,12 @@ const teamsSlice = createSlice({
         state.teams[targetTeamIndex].members.concat(newMemberItem);
       state.changed = true;
     },
+    removeTeam(state, action) {
+      const teamId = action.payload;
+      console.log(teamId);
+      state.teams = state.teams.filter((team) => team.id !== teamId);
+      state.changed = true;
+    },
   },
 });
 

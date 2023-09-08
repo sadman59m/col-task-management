@@ -15,16 +15,19 @@
   padding: 0.5rem 0.75rem;
   color: white;
   margin-left: 0.75rem;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+  /* box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5); */
+  transition: all 0.2s linear;
+}
+
+.newtask-btn:hover {
+  background: white;
+  color: var(--primary-color);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
 }
 
 .task-modal {
   max-width: 30rem;
   width: 90%;
-  transform: translate(-50%, -60%);
-  margin: 2rem auto;
-  padding: 2rem;
-  padding-left: 1rem;
 }
 
 .tasklist-ul {

@@ -80,7 +80,7 @@ const MainNav = () => {
             {token && (
               <li>
                 <Form action="/logout" method="post">
-                  <button>lougout</button>
+                  <button className={classes["logout-btn"]}>lougout</button>
                 </Form>
               </li>
             )}

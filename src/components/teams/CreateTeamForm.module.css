@@ -28,7 +28,7 @@
   padding-bottom: 0;
 }
 
-.team-action button {
+.btn-save {
   font-size: 1.3rem;
   cursor: pointer;
   border: 1.5px solid var(--primary-color);
@@ -36,6 +36,17 @@
   background-color: var(--primary-color);
   padding: 0.5rem 0.75rem;
   color: white;
+  margin-left: 0.75rem;
+}
+
+.btn-cancel {
+  font-size: 1.3rem;
+  cursor: pointer;
+  border: 1.5px solid var(--primary-color);
+  border-radius: 6px;
+  background-color: white;
+  padding: 0.5rem 0.75rem;
+  color: var(--primary-color);
   margin-left: 0.75rem;
 }
 

@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
+import classes from "./AddUserMember.module.css";
 import { getToken } from "../../../util/auth";
 import { getAllUsers } from "../../../util/userInfo";
-import classes from "./AddMember.module.css";
 import { teamsActions } from "../../../store/teams-slice";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -34,16 +34,19 @@ const AddMember = ({ onClose, teamId }) => {
                   <p className={classes["member-name"]}>{member.userName}</p>
                   <p className={classes["member-detail"]}>{member.email}</p>
                   {member.email === token ? (
-                    <p className={classes["member-detail"]}>{"(Me)"}</p>
+                    <div className={classes["adduser-action"]}>
+                      <p className={classes["member-detail"]}>{"(Me)"}</p>
+                    </div>
                   ) : null}
                   {member.email !== token && (
-                    <button
-                      className={classes["adduser-btn"]}
-                      onClick={handleAddUser.bind(null, member)}
-                    >
-                      {" "}
-                      + Add{" "}
-                    </button>
+                    <div className={classes["adduser-action"]}>
+                      <button
+                        className={classes["adduser-btn"]}
+                        onClick={handleAddUser.bind(null, member)}
+                      >
+                        + Add
+                      </button>
+                    </div>
                   )}
                 </li>
               );
