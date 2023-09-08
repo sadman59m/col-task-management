@@ -23,3 +23,12 @@ export function setUserData(userData) {
   }
   return null;
 }
+
+export function getAllUsers() {
+  const users = JSON.parse(localStorage.getItem("users"));
+  if (users) {
+    return users;
+  } else {
+    return null;
+  }
+}

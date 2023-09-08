@@ -6,9 +6,13 @@ import classes from "./team.module.css";
 import { setTeams } from "../../store/teams-action";
 import Members from "./teamMember/Members";
 import ModalPrimary from "../UI/ModalPrimary";
+import AddMember from "./teamMember/AddMember";
+import TaskList from "./task/TaskList";
 
 const Team = ({ team }) => {
   const [showMembers, setShowMembers] = useState(false);
+  const [showAddMembers, setShowAddMembers] = useState(false);
+
   const stateTeams = useSelector((state) => state.teams);
   const dispatch = useDispatch();
 
@@ -22,6 +26,9 @@ const Team = ({ team }) => {
   const showMembersHandler = () => {
     setShowMembers((prevState) => !prevState);
   };
+  const showAddMembersHandler = () => {
+    setShowAddMembers((prevState) => !prevState);
+  };
 
   // const showMemberClass = setShowMembers ? classes["showmember-active"] : "";
 
@@ -30,12 +37,12 @@ const Team = ({ team }) => {
       <div className={`${classes["team-container"]}`}>
         <div className={classes["teammember-container"]}>
           <div className={classes["all-members"]}>
-            {!showMembers && (
+            {
               <button
                 className={classes["member-btn"]}
                 onClick={showMembersHandler}
               >{`Show all members (${teamMembers.length})`}</button>
-            )}
+            }
             {showMembers && (
               <>
                 <ModalPrimary onClose={showMembersHandler}>
@@ -44,11 +51,26 @@ const Team = ({ team }) => {
               </>
             )}
           </div>
-
-          <div className={classes["add-members"]}>
-            <button className={classes["member-btn"]}>add members</button>
+          <div className={classes["all-members"]}>
+            {
+              <button
+                className={classes["member-btn"]}
+                onClick={showAddMembersHandler}
+              >{`Add New Member`}</button>
+            }
+            {showAddMembers && (
+              <>
+                <ModalPrimary onClose={showAddMembersHandler}>
+                  <AddMember
+                    members={teamMembers}
+                    onClose={showAddMembersHandler}
+                  />
+                </ModalPrimary>
+              </>
+            )}
           </div>
         </div>
+        <TaskList />
       </div>
     </>
   );
