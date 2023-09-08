@@ -43,9 +43,7 @@ const TeamsList = () => {
       });
     }
   });
-  console.log(memberTeams);
   const teams = adminTeams.concat(memberTeams);
-  console.log(teams);
 
   const openCreateTeamHandler = () => {
     setOpenCreateTeam((prevState) => !prevState);

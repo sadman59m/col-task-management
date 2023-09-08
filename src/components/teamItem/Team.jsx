@@ -2,13 +2,14 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import classes from "./Team.module.css";
 
 import { getTeams, setTeams } from "../../store/teams-action";
 import Members from "./teamMember/Members";
 import ModalPrimary from "../UI/ModalPrimary";
 import AddMember from "./teamMember/AddMember";
 import TaskList from "./task/TaskList";
+
+import classes from "./NewTeam.module.css";
 
 const Team = ({ team }) => {
   const teamId = team.id;
@@ -46,7 +47,6 @@ const Team = ({ team }) => {
     setShowAddMembers((prevState) => !prevState);
   };
 
-  console.log(team.creatorName);
   // const showMemberClass = setShowMembers ? classes["showmember-active"] : "";
 
   return (
