@@ -5,6 +5,7 @@ import { getToken } from "../../../util/auth";
 import { getAllUsers } from "../../../util/userInfo";
 import { teamsActions } from "../../../store/teams-slice";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 const AddMember = ({ onClose, teamId }) => {
   const stateTeams = useSelector((state) => state.teams);
@@ -12,7 +13,29 @@ const AddMember = ({ onClose, teamId }) => {
   const allUsers = getAllUsers();
   const token = getToken();
   // const filteredUsers = allUsers.filter((user) => user.email !== token);
-  console.log(stateTeams);
+  const currentTeam = stateTeams.teams.find((team) => team.id === teamId);
+  const currentTeamMembers = currentTeam.members;
+  const filteredUsers = [];
+
+  // run two nested for loop to filter out the already added users
+  for (let i = 0; i < allUsers.length; ++i) {
+    let userFound = false;
+    for (let j = 0; j < currentTeamMembers.length; ++j) {
+      if (currentTeamMembers[j].email === allUsers[i].email) {
+        userFound = true;
+        break;
+      }
+    }
+    if (!userFound) {
+      const newUser = {
+        userName: allUsers[i].userName,
+        email: allUsers[i].email,
+      };
+      filteredUsers.push(newUser);
+    }
+  }
+
+  console.log(filteredUsers);
   const handleAddUser = (member) => {
     const newMember = {
       userName: member.userName,
@@ -20,15 +43,27 @@ const AddMember = ({ onClose, teamId }) => {
       teamId: teamId,
     };
     dispatch(teamsActions.addMember(newMember));
+    toast.success("User Added.", {
+      position: "top-center",
+      autoClose: 500,
+    });
   };
   return (
     <>
       <div className={classes["member-container"]}>
-        <p>{`Users (${allUsers.length})`}</p>
-        <p>{`Add user functionality need to be added`}</p>
+        <p
+          className={classes["member-container-header"]}
+        >{`Avaialbe Users (${filteredUsers.length})`}</p>
         <ul className={classes["member-ul"]}>
-          {allUsers &&
-            allUsers.map((member, index) => {
+          {filteredUsers.length <= 0 && (
+            <li className={classes["member-li"]}>
+              <p
+                className={classes["member-name"]}
+              >{`No Users Available To Add`}</p>
+            </li>
+          )}
+          {filteredUsers &&
+            filteredUsers.map((member, index) => {
               return (
                 <li className={classes["member-li"]} key={index}>
                   <p className={classes["member-name"]}>{member.userName}</p>

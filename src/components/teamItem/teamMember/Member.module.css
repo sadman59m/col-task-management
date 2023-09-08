@@ -5,6 +5,11 @@
   align-items: center;
 }
 
+.member-container-header {
+  margin: 0.5rem;
+  font-weight: 700;
+}
+
 .member-ul {
   list-style: none;
   margin: 0;
@@ -17,7 +22,6 @@
 .member-li {
   text-decoration: none;
   margin-bottom: 1rem;
-  padding-bottom: 0.3rem;
   font-size: 1.5rem;
   color: #333;
   text-align: start;
@@ -26,18 +30,20 @@
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  border-bottom: 2px solid #333;
+  border-bottom: 1px solid #555;
 }
 
 .member-name {
   display: inline;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: 600;
+  margin: 0.5rem 0.75rem;
 }
 
 .member-detail {
   display: inline;
-  font-size: 1rem;
+  font-size: 0.9rem;
+  margin: 0.5rem 0.75rem;
 }
 
 .member-container button {

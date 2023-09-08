@@ -6,7 +6,9 @@ const Members = ({ members, onClose }) => {
   return (
     <>
       <div className={classes["member-container"]}>
-        <p>{`Total Members (${members.length})`}</p>
+        <p
+          className={classes["member-container-header"]}
+        >{`Total Members (${members.length})`}</p>
         <ul className={classes["member-ul"]}>
           {members.map((member, index) => {
             return (
