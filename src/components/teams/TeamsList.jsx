@@ -69,7 +69,7 @@ const TeamsList = () => {
             <CreateTeamForm onClose={openCreateTeamHandler} />
           </ModalPrimary>
         )}
-        <h2>Your teams</h2>
+        <h2>{`Your Teams (${teams.length})`}</h2>
         {teams && teams.length <= 0 && <h3>No available teams to show.</h3>}
         <ul className={classes["teamlist-ul"]}>
           {teams.length > 0 &&
