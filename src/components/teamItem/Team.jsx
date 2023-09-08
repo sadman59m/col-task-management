@@ -21,7 +21,8 @@ const Team = ({ team }) => {
   // find this specific team from state teams
 
   const targetTeam = stateTeams.teams.find((team) => team.id === teamId);
-  console.log(targetTeam);
+
+  // console.log(team);
 
   useEffect(() => {
     dispatch(getTeams());

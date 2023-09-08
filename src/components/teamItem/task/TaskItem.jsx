@@ -1,8 +1,40 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
+import { useState } from "react";
 import classes from "./TaskItem.module.css";
+import ModalPrimary from "../../UI/ModalPrimary";
+import NewTaskForm from "./NewTaskForm";
+import { teamsActions } from "../../../store/teams-slice";
+import { useDispatch } from "react-redux";
 
-const TaskItem = ({ title, description, dueDate, priority, status }) => {
+const TaskItem = ({
+  taskId,
+  title,
+  description,
+  dueDate,
+  priority,
+  status,
+  teamId,
+}) => {
+  const [openUpdateTask, setOpenUpdateTask] = useState(false);
+  const dispatch = useDispatch();
+
+  const openUpdateTaskHandler = () => {
+    setOpenUpdateTask((prevState) => !prevState);
+  };
+
+  // to delete a task
+  const deleteTaskHander = () => {
+    const taskInfo = {
+      taskId: taskId,
+      teamId: teamId,
+    };
+    const confirmDelete = window.confirm("Cofirm Delete?");
+    if (confirmDelete) {
+      dispatch(teamsActions.removeTask(taskInfo));
+    }
+    return;
+  };
   return (
     <li className={classes["taskitem-list"]}>
       <div className={classes["taskitem-content"]}>
@@ -24,8 +56,36 @@ const TaskItem = ({ title, description, dueDate, priority, status }) => {
         </div>
       </div>
       <div className={classes["taskitem-action"]}>
-        <button className={classes["update-btn"]}>Update</button>
-        <button className={classes["delete-btn"]}>Delete</button>
+        {!openUpdateTask && (
+          <button
+            className={classes["update-btn"]}
+            onClick={openUpdateTaskHandler}
+          >
+            Update Task
+          </button>
+        )}
+        {openUpdateTask && (
+          <ModalPrimary
+            className={classes["task-modal"]}
+            onClose={openUpdateTaskHandler}
+          >
+            <NewTaskForm
+              onClose={openUpdateTaskHandler}
+              taskId={taskId}
+              teamId={teamId}
+              title={title}
+              description={description}
+              priority={priority}
+              dueDate={dueDate}
+              status={status}
+              newTaskReference={false}
+              updateTaskReference={true}
+            />
+          </ModalPrimary>
+        )}
+        <button className={classes["delete-btn"]} onClick={deleteTaskHander}>
+          Delete
+        </button>
       </div>
     </li>
   );

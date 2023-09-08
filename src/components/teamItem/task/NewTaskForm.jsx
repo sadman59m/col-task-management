@@ -6,7 +6,18 @@ import { v4 as uuidv4 } from "uuid";
 import { teamsActions } from "../../../store/teams-slice";
 import { useDispatch } from "react-redux";
 
-const NewTaskForm = ({ onClose, teamId }) => {
+const NewTaskForm = ({
+  onClose,
+  teamId,
+  taskId,
+  title,
+  description,
+  dueDate,
+  priority,
+  status,
+  newTaskReference,
+  updateTaskReference,
+}) => {
   const titleRef = useRef();
   const descRef = useRef();
   const dateRef = useRef();
@@ -16,7 +27,6 @@ const NewTaskForm = ({ onClose, teamId }) => {
   const [descError, setDescError] = useState(false);
   const [dateError, setDateError] = useState(false);
   const dispatch = useDispatch();
-  console.log(teamId);
 
   // for showing error message
   let errorContent;
@@ -29,6 +39,7 @@ const NewTaskForm = ({ onClose, teamId }) => {
     const taskPrio = prioRef.current.value.trim();
     const taskStatus = statusRef.current.value.trim();
 
+    // validate input data
     if (taskTitle.length < 3) {
       setTitleError(true);
       return;
@@ -50,20 +61,37 @@ const NewTaskForm = ({ onClose, teamId }) => {
     }
     setDateError(false);
 
-    const newTaskId = uuidv4();
-    //construct new task object
-    const newTask = {
-      id: newTaskId,
-      teamId: teamId,
-      title: taskTitle,
-      description: taskDesc,
-      dueDate: taskDate,
-      priorityLevel: taskPrio,
-      status: taskStatus,
-    };
+    // if all the validation passed
 
-    // sent the to the redux state to be saved
-    dispatch(teamsActions.addNewTask(newTask));
+    // for new task creation
+    if (newTaskReference) {
+      const newTaskId = uuidv4();
+      //construct new task object
+      const newTaskItem = {
+        id: newTaskId,
+        teamId: teamId,
+        title: taskTitle,
+        description: taskDesc,
+        dueDate: taskDate,
+        priorityLevel: taskPrio,
+        status: taskStatus,
+      };
+
+      // sent the to the redux state to be saved
+      dispatch(teamsActions.addNewTask(newTaskItem));
+    }
+    if (updateTaskReference) {
+      const updatedTaskItem = {
+        id: taskId,
+        teamId: teamId,
+        title: taskTitle,
+        description: taskDesc,
+        dueDate: taskDate,
+        priorityLevel: taskPrio,
+        status: taskStatus,
+      };
+      dispatch(teamsActions.updateTask(updatedTaskItem));
+    }
 
     //set form values to emply and close the modal
     titleRef.current.value = "";
@@ -91,22 +119,39 @@ const NewTaskForm = ({ onClose, teamId }) => {
     <form className={classes["task-form"]} onSubmit={submitHandler}>
       <div>
         <label htmlFor="title">Task Title</label>
-        <input id="title" name="title" ref={titleRef} />
+        <input
+          id="title"
+          name="title"
+          ref={titleRef}
+          defaultValue={title ? title : null}
+        />
         {titleError && titleErrorContent}
       </div>
       <div>
         <label htmlFor="description">Task Description</label>
-        <textarea id="description" type="" name="description" ref={descRef} />
+        <textarea
+          id="description"
+          type=""
+          name="description"
+          ref={descRef}
+          defaultValue={description ? description : null}
+        />
         {descError && descErrorContent}
       </div>
       <div>
         <label htmlFor="duedate">Due Date</label>
-        <input id="duedate" name="duedate" type={"date"} ref={dateRef} />
+        <input
+          id="duedate"
+          name="duedate"
+          type={"date"}
+          ref={dateRef}
+          defaultValue={dueDate ? dueDate : null}
+        />
         {dateError && dateErrorContent}
       </div>
       <div>
         <label htmlFor="priority">Priority Level</label>
-        <select ref={prioRef}>
+        <select ref={prioRef} defaultValue={priority ? priority : "Low"}>
           <option value="Low">Low</option>
           <option value="Medium">Medium</option>
           <option value="High">High</option>
@@ -114,14 +159,16 @@ const NewTaskForm = ({ onClose, teamId }) => {
       </div>
       <div>
         <label htmlFor="Status">Status</label>
-        <select ref={statusRef}>
+        <select ref={statusRef} defaultValue={status ? status : "Idel"}>
           <option value="Idle">Idle</option>
           <option value="In progress">In progress</option>
           <option value="Completed">Completed</option>
         </select>
       </div>
       <div className={classes["task-action"]}>
-        <button className={classes["btn-save"]}>Create</button>
+        <button className={classes["btn-save"]}>
+          {newTaskReference ? "Create" : "Update"}
+        </button>
         <button className={classes["btn-cancel"]} onClick={onClose}>
           Cancel
         </button>

@@ -21,12 +21,40 @@ const teamsSlice = createSlice({
     addNewTask(state, action) {
       const newTaskItem = action.payload;
       const teamId = newTaskItem.teamId;
-
       const targetTeam = state.teams.findIndex((team) => team.id === teamId);
-
       // adding new task to the task array of the target team
       state.teams[targetTeam].tasks =
         state.teams[targetTeam].tasks.concat(newTaskItem);
+      state.changed = true;
+    },
+    updateTask(state, action) {
+      const updatedTaskItem = action.payload;
+      const taskId = updatedTaskItem.id;
+      const teamId = updatedTaskItem.teamId;
+      // serach for the target team and then the target task to be updated
+      const targetTeamIndex = state.teams.findIndex(
+        (team) => team.id === teamId
+      );
+      const targetTaskIndex = state.teams[targetTeamIndex].tasks.findIndex(
+        (task) => task.id === taskId
+      );
+      // we can directly replace the item
+      // redux will do the copy and replace for us
+      state.teams[targetTeamIndex].tasks[targetTaskIndex] = updatedTaskItem;
+      state.changed = true;
+    },
+    removeTask(state, action) {
+      const taskId = action.payload.taskId;
+      const teamId = action.payload.teamId;
+      console.log(taskId);
+      console.log(teamId);
+      const targetTeamIndex = state.teams.findIndex(
+        (team) => team.id === teamId
+      );
+      // remove the task item from the target team
+      state.teams[targetTeamIndex].tasks = state.teams[
+        targetTeamIndex
+      ].tasks.filter((task) => task.id !== taskId);
       state.changed = true;
     },
   },

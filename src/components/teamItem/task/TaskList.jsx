@@ -29,7 +29,12 @@ const TaskList = ({ tasks, teamId }) => {
             onClose={openNewTaskHandler}
           >
             {/* <CreateTeamForm onClose={openNewTaskHandler} /> */}
-            <NewTaskForm onClose={openNewTaskHandler} teamId={teamId} />
+            <NewTaskForm
+              onClose={openNewTaskHandler}
+              teamId={teamId}
+              newTaskReference={true}
+              updateTaskReference={false}
+            />
           </ModalPrimary>
         )}
         <h2>All Tasks</h2>
@@ -40,11 +45,13 @@ const TaskList = ({ tasks, teamId }) => {
               return (
                 <TaskItem
                   key={index}
+                  taskId={item.id}
                   title={item.title}
                   description={item.description}
                   priority={item.priorityLevel}
                   dueDate={item.dueDate}
                   status={item.status}
+                  teamId={teamId}
                 />
               );
             })}
