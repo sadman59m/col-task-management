@@ -9,17 +9,17 @@ const Team = ({ team }) => {
   const stateTeams = useSelector((state) => state.teams);
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(getTeams());
-  // }, [dispatch]);
-
   useEffect(() => {
     if (stateTeams.changed) {
       dispatch(setTeams(stateTeams.teams));
     }
   }, [stateTeams, dispatch]);
 
-  return <div className={classes.team}>{team.title}</div>;
+  return (
+    <div className={classes.team}>
+      {team.title} {team.id}
+    </div>
+  );
 };
 
 export default Team;
