@@ -13,7 +13,6 @@ import { useNavigate } from "react-router-dom";
 const TeamsList = () => {
   const [openCreateTeam, setOpenCreateTeam] = useState(false);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   // fetch all teams from redux state
   // dispatch to handle actions
   const stateTeams = useSelector((state) => state.teams);
@@ -30,18 +29,21 @@ const TeamsList = () => {
     }
   }, [stateTeams, dispatch]);
 
-  const teams = allTeams.filter((team) => team.creatorId === token);
+  const adminTeams = allTeams.filter((team) => team.creatorId === token);
   const memberTeams = [];
 
   // find all the teams where current user is part of
-  allTeams.forEach((team) =>
-    team.members.forEach((member) => {
-      if (member === token) {
-        memberTeams.push(team);
-      }
-    })
-  );
-  console.log(memberTeams);
+
+  allTeams.forEach((team) => {
+    if (team.creatorId !== token) {
+      team.members.forEach((member) => {
+        if (member === token) {
+          memberTeams.push(team);
+        }
+      });
+    }
+  });
+  const teams = adminTeams.concat(memberTeams);
 
   const openCreateTeamHandler = () => {
     setOpenCreateTeam((prevState) => !prevState);

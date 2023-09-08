@@ -39,7 +39,7 @@ const router = createBrowserRouter([
             element: <Teams />,
           },
           {
-            path: ":teamId",
+            path: "/teams/:teamId",
             element: <TeamPage />,
             id: "team-details",
             loader: teamDetailLoader,

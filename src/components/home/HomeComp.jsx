@@ -17,7 +17,10 @@ const HomeComp = () => {
         <h1>{`Welcome ${token ? userName : "Guest"}`}</h1>
         {!token && <h2>Please log in to use Collaborative task manager.</h2>}
         {token && (
-          <h2>{`Let's get Started. Go to teams to create your team.`}</h2>
+          <>
+            <h2>{`Let's get Started`}</h2>
+            <h2>{`Go to teams to manage your teams and tasks`}</h2>
+          </>
         )}
       </div>
     </>

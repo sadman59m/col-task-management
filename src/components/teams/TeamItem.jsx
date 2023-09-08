@@ -15,7 +15,7 @@ const TeamItem = ({
 
   return (
     <li className={`${classes["teamitem-list"]} ${className}`}>
-      <Link to={id}>
+      <Link to={`/teams/${id}`}>
         <p className={classes["teamitem-head"]}>{title}</p>
         <div className={classes["teamitem-sub"]}>
           <p>{`Created by: ${creator}`}</p>

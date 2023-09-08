@@ -83,7 +83,7 @@ export async function action({ request }) {
 
   toast.success("Sinup Successful.", {
     position: "top-center",
-    autoClose: 2000,
+    autoClose: 1000,
   });
 
   return redirect("/login");

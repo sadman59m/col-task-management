@@ -2,6 +2,7 @@
 // import { redirect } from "react-router-dom";
 // import { redirect } from "react-router-dom";
 import { redirect } from "react-router-dom";
+import { toast } from "react-toastify";
 import Login from "../components/auth/Login";
 import {
   emailValidator,
@@ -31,6 +32,10 @@ export async function action({ request }) {
 
   if (detectUser(email) && passwordChecker(email, password)) {
     localStorage.setItem("token", email);
+    toast.success("Login successful.", {
+      position: "top-center",
+      autoClose: 1000,
+    });
     return redirect("/");
   } else {
     return new Response("invalid user credintials.");
