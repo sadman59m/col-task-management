@@ -46,48 +46,57 @@ const Team = ({ team }) => {
     setShowAddMembers((prevState) => !prevState);
   };
 
+  console.log(team.creatorName);
   // const showMemberClass = setShowMembers ? classes["showmember-active"] : "";
 
   return (
     <>
       <div className={`${classes["team-container"]}`}>
         <div className={classes["teammember-container"]}>
-          <div className={classes["all-members"]}>
-            {
-              <button
-                className={classes["member-btn"]}
-                onClick={showMembersHandler}
-              >{`Show all members (${teamMembers.length})`}</button>
-            }
-            {showMembers && (
-              <>
+          <div className={classes["teammember-button-container"]}>
+            <div className={classes["all-members"]}>
+              {
+                <button
+                  className={classes["member-btn"]}
+                  onClick={showMembersHandler}
+                >{`Show all members (${teamMembers.length})`}</button>
+              }
+              {showMembers && (
+                <>
+                  <ModalPrimary
+                    className={classes["member-modal"]}
+                    onClose={showMembersHandler}
+                  >
+                    <Members
+                      members={teamMembers}
+                      onClose={showMembersHandler}
+                    />
+                  </ModalPrimary>
+                </>
+              )}
+            </div>
+            <div className={classes["all-members"]}>
+              {
+                <button
+                  className={classes["member-btn"]}
+                  onClick={showAddMembersHandler}
+                >{`Add New Member`}</button>
+              }
+              {showAddMembers && (
                 <ModalPrimary
                   className={classes["member-modal"]}
-                  onClose={showMembersHandler}
-                >
-                  <Members members={teamMembers} onClose={showMembersHandler} />
-                </ModalPrimary>
-              </>
-            )}
-          </div>
-          <div className={classes["all-members"]}>
-            {
-              <button
-                className={classes["member-btn"]}
-                onClick={showAddMembersHandler}
-              >{`Add New Member`}</button>
-            }
-            {showAddMembers && (
-              <ModalPrimary
-                className={classes["member-modal"]}
-                onClose={showAddMembersHandler}
-              >
-                <AddMember
-                  members={teamMembers}
                   onClose={showAddMembersHandler}
-                />
-              </ModalPrimary>
-            )}
+                >
+                  <AddMember
+                    members={teamMembers}
+                    onClose={showAddMembersHandler}
+                  />
+                </ModalPrimary>
+              )}
+            </div>
+          </div>
+          <div className={classes.creator}>
+            <p>{`Created by: ${team.creatorName}`}</p>
           </div>
         </div>
         <TaskList tasks={teamTasks} teamId={teamId} />

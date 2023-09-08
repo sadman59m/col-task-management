@@ -42,4 +42,14 @@ li button {
   border: none;
   outline: none;
   cursor: pointer;
+  transition: all 0.1s linear;
+}
+
+li button:hover {
+  border-bottom: 3px solid white;
+}
+
+li a:hover,
+li a.active {
+  border-bottom: 3px solid white;
 }

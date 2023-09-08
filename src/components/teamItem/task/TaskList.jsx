@@ -37,7 +37,7 @@ const TaskList = ({ tasks, teamId }) => {
             />
           </ModalPrimary>
         )}
-        <h2>All Tasks</h2>
+        <h2>{`All Tasks (${tasks.length})`}</h2>
         {tasks.length <= 0 && <h3>No available tasks to show.</h3>}
         <ul className={classes["tasklist-ul"]}>
           {tasks.length > 0 &&
