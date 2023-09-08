@@ -23,7 +23,6 @@ const teamsSlice = createSlice({
       const teamId = newTaskItem.teamId;
 
       const targetTeam = state.teams.findIndex((team) => team.id === teamId);
-      console.log(state.teams[targetTeam].tasks);
 
       // adding new task to the task array of the target team
       state.teams[targetTeam].tasks =

@@ -11,13 +11,17 @@ import AddMember from "./teamMember/AddMember";
 import TaskList from "./task/TaskList";
 
 const Team = ({ team }) => {
+  const teamId = team.id;
   const [showMembers, setShowMembers] = useState(false);
   const [showAddMembers, setShowAddMembers] = useState(false);
 
   const stateTeams = useSelector((state) => state.teams);
   const dispatch = useDispatch();
 
-  console.log(stateTeams);
+  // find this specific team from state teams
+
+  const targetTeam = stateTeams.teams.find((team) => team.id === teamId);
+  console.log(targetTeam);
 
   useEffect(() => {
     dispatch(getTeams());
@@ -29,17 +33,17 @@ const Team = ({ team }) => {
     }
   }, [stateTeams, dispatch]);
 
-  const teamMembers = team.members;
+  // getting team members of this team. set emaply array if undefined
+  const teamMembers = targetTeam ? targetTeam.members : [];
+  // get team task the same way
+  const teamTasks = targetTeam ? targetTeam.tasks : [];
+
   const showMembersHandler = () => {
     setShowMembers((prevState) => !prevState);
   };
   const showAddMembersHandler = () => {
     setShowAddMembers((prevState) => !prevState);
   };
-
-  // all the team tasks
-  const tasks = team.tasks;
-  const teamId = team.id;
 
   // const showMemberClass = setShowMembers ? classes["showmember-active"] : "";
 
@@ -85,7 +89,7 @@ const Team = ({ team }) => {
             )}
           </div>
         </div>
-        <TaskList tasks={tasks} teamId={teamId} />
+        <TaskList tasks={teamTasks} teamId={teamId} />
       </div>
     </>
   );

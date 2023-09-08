@@ -4,6 +4,7 @@ import { useState } from "react";
 import classes from "./TaskList.module.css";
 import ModalPrimary from "../../UI/ModalPrimary";
 import NewTaskForm from "./NewTaskForm";
+import TaskItem from "./TaskItem";
 
 const TaskList = ({ tasks, teamId }) => {
   const [openNewTask, setOpneNewTask] = useState(false);
@@ -32,21 +33,19 @@ const TaskList = ({ tasks, teamId }) => {
           </ModalPrimary>
         )}
         <h2>Tasks</h2>
-        {tasks && tasks.length <= 0 && <h3>No available tasks to show.</h3>}
+        {tasks.length <= 0 && <h3>No available tasks to show.</h3>}
         <ul className={classes["teamlist-ul"]}>
           {tasks.length > 0 &&
             tasks.map((item, index) => {
               return (
-                // <TeamItem
-                //   className={classes["teamlist-li"]}
-                //   key={index}
-                //   id={item.id}
-                //   title={item.title}
-                //   creator={item.creatorName}
-                //   memberNumber={item.members.length}
-                //   taskNumber={item.tasks.length}
-                // />
-                <h1 key={index}>Task</h1>
+                <TaskItem
+                  key={index}
+                  title={item.title}
+                  description={item.description}
+                  priority={item.priorityLevel}
+                  dueDate={item.dueDate}
+                  status={item.status}
+                />
               );
             })}
         </ul>
