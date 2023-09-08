@@ -2,8 +2,9 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import classes from "./team.module.css";
-import { setTeams } from "../../store/teams-action";
+import classes from "./Team.module.css";
+
+import { getTeams, setTeams } from "../../store/teams-action";
 import Members from "./teamMember/Members";
 import ModalPrimary from "../UI/ModalPrimary";
 import AddMember from "./teamMember/AddMember";
@@ -15,6 +16,12 @@ const Team = ({ team }) => {
 
   const stateTeams = useSelector((state) => state.teams);
   const dispatch = useDispatch();
+
+  console.log(stateTeams);
+
+  useEffect(() => {
+    dispatch(getTeams());
+  }, [dispatch]);
 
   useEffect(() => {
     if (stateTeams.changed) {
@@ -29,6 +36,10 @@ const Team = ({ team }) => {
   const showAddMembersHandler = () => {
     setShowAddMembers((prevState) => !prevState);
   };
+
+  // all the team tasks
+  const tasks = team.tasks;
+  const teamId = team.id;
 
   // const showMemberClass = setShowMembers ? classes["showmember-active"] : "";
 
@@ -45,7 +56,10 @@ const Team = ({ team }) => {
             }
             {showMembers && (
               <>
-                <ModalPrimary onClose={showMembersHandler}>
+                <ModalPrimary
+                  className={classes["member-modal"]}
+                  onClose={showMembersHandler}
+                >
                   <Members members={teamMembers} onClose={showMembersHandler} />
                 </ModalPrimary>
               </>
@@ -59,18 +73,19 @@ const Team = ({ team }) => {
               >{`Add New Member`}</button>
             }
             {showAddMembers && (
-              <>
-                <ModalPrimary onClose={showAddMembersHandler}>
-                  <AddMember
-                    members={teamMembers}
-                    onClose={showAddMembersHandler}
-                  />
-                </ModalPrimary>
-              </>
+              <ModalPrimary
+                className={classes["member-modal"]}
+                onClose={showAddMembersHandler}
+              >
+                <AddMember
+                  members={teamMembers}
+                  onClose={showAddMembersHandler}
+                />
+              </ModalPrimary>
             )}
           </div>
         </div>
-        <TaskList />
+        <TaskList tasks={tasks} teamId={teamId} />
       </div>
     </>
   );

@@ -7,7 +7,6 @@ import { getLocalStorageTeams } from "../util/teamInfo";
 
 const TeamPage = () => {
   const team = useRouteLoaderData("team-details");
-  console.log(team);
   // const dispatch = useDispatch();
   // const stateTeams = useSelector((state) => state.teams);
 

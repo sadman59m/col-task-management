@@ -11,7 +11,7 @@ const AddMember = ({ onClose }) => {
   return (
     <>
       <div className={classes["member-container"]}>
-        <p>{`Total Users (${filteredUsers.length})`}</p>
+        <p>{`Users (${filteredUsers.length})`}</p>
         <p>{`Add user functionality need to be added`}</p>
         <ul className={classes["member-ul"]}>
           {filteredUsers &&

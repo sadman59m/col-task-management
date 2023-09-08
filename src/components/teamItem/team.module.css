@@ -2,8 +2,9 @@
   border: 1px solid black;
   position: relative;
   max-width: 90vw;
+  width: 90%;
   margin: 5rem auto;
-  min-height: 100vh;
+  min-height: 70vh;
   display: flex;
   flex-direction: column;
 }
@@ -39,4 +40,9 @@
 
 .member-btn:hover {
   transform: scale(1.03);
+}
+
+.member-modal {
+  max-width: 30rem;
+  width: 90%;
 }

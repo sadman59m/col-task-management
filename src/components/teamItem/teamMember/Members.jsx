@@ -12,10 +12,9 @@ const Members = ({ members, onClose }) => {
             return (
               <li className={classes["member-li"]} key={index}>
                 <p className={classes["member-name"]}>{member.userName}</p>
-                <p className={classes["member-detail"]}>{member.email}</p>
-                {member.email === token ? (
-                  <p className={classes["member-detail"]}>{"(Me)"}</p>
-                ) : null}
+                <p className={classes["member-detail"]}>{`${member.email} ${
+                  member.email === token ? "(Me)" : null
+                }`}</p>
               </li>
             );
           })}
