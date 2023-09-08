@@ -37,12 +37,13 @@ const TeamsList = () => {
   allTeams.forEach((team) => {
     if (team.creatorId !== token) {
       team.members.forEach((member) => {
-        if (member === token) {
+        if (member.email === token) {
           memberTeams.push(team);
         }
       });
     }
   });
+  console.log(memberTeams);
   const teams = adminTeams.concat(memberTeams);
 
   const openCreateTeamHandler = () => {

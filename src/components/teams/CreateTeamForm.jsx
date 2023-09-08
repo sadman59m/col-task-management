@@ -32,7 +32,11 @@ const CreateTeamForm = ({ onClose }) => {
 
     // new team object to push into state
     const members = [];
-    members.push(userInfo.email);
+    const singleMember = {
+      email: userInfo.email,
+      userName: userInfo.userName,
+    };
+    members.push(singleMember);
     const newTeamId = uuidv4();
     const newTeam = {
       id: newTeamId,

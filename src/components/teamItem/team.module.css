@@ -1,4 +1,33 @@
-.team {
-  max-width: 40rem;
-  margin: 8rem auto;
+.team-container {
+  border: 1px solid black;
+  position: relative;
+  max-width: 90vw;
+  margin: 5rem auto;
+  min-height: 100vh;
+}
+
+.team-container .showmember-active {
+  overflow: hidden;
+}
+
+.teammember-container {
+  position: absolute;
+  top: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.member-btn {
+  background: transparent;
+  padding: 0.5rem 0.75rem;
+  background: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 }
