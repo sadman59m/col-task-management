@@ -11,6 +11,8 @@
   margin: 0;
   padding: 1rem;
   width: 100%;
+  overflow-y: scroll;
+  max-height: 18rem;
 }
 
 .member-li {
@@ -22,7 +24,7 @@
   text-align: start;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   gap: 1rem;
   border-bottom: 2px solid #333;
@@ -33,11 +35,25 @@
   display: inline;
   font-size: 1.3rem;
   font-weight: 600;
+  flex: 1;
 }
 
 .member-detail {
   display: inline;
   font-size: 1rem;
+  flex: 1;
+}
+
+.adduser-btn {
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  background: #06a0c7e7;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 20px;
+  cursor: pointer;
+  margin-bottom: 0.25rem;
 }
 
 .close-btn {
@@ -55,21 +71,4 @@
 .close-btn:hover {
   background-color: var(--primary-color);
   color: white;
-}
-
-.adduser-btn {
-  font-size: 1rem;
-  font-weight: 600;
-  color: white;
-  background: #06a0c7e7;
-  padding: 0.5rem 0.75rem;
-  border: 1px solid var(--primary-color);
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.2s linear;
-  margin-bottom: 0.25rem;
-}
-
-.adduser-btn:hover {
-  background: var(--primary-color);
 }

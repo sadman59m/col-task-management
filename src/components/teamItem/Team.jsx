@@ -90,6 +90,7 @@ const Team = ({ team }) => {
                   <AddMember
                     members={teamMembers}
                     onClose={showAddMembersHandler}
+                    teamId={team.id}
                   />
                 </ModalPrimary>
               )}

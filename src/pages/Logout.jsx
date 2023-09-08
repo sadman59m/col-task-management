@@ -6,5 +6,5 @@ export function action() {
     localStorage.removeItem("token");
     return redirect("/login");
   }
-  return null;
+  return redirect("/");
 }

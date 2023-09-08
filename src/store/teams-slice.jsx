@@ -57,6 +57,20 @@ const teamsSlice = createSlice({
       ].tasks.filter((task) => task.id !== taskId);
       state.changed = true;
     },
+    addMember(state, action) {
+      const memberItem = action.payload;
+      const teamId = memberItem.teamId;
+      const newMemberItem = {
+        email: memberItem.email,
+        userName: memberItem.userName,
+      };
+      const targetTeamIndex = state.teams.findIndex(
+        (team) => team.id === teamId
+      );
+      state.teams[targetTeamIndex].members =
+        state.teams[targetTeamIndex].members.concat(newMemberItem);
+      state.changed = true;
+    },
   },
 });
 

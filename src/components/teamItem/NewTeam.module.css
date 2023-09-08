@@ -57,4 +57,5 @@
 .member-modal {
   max-width: 30rem;
   width: 90%;
+  transform: translate(-50% -50%);
 }
