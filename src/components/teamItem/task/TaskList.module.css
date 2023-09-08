@@ -1,5 +1,4 @@
 .task-container {
-  border: 1px solid black;
   max-width: 100%;
   margin-top: 5rem;
   display: flex;
@@ -22,7 +21,7 @@
 .task-modal {
   max-width: 30rem;
   width: 90%;
-  transform: translate(-50%, -70%);
+  transform: translate(-50%, -60%);
   margin: 2rem auto;
   padding: 2rem;
   padding-left: 1rem;

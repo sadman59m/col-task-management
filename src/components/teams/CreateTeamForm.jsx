@@ -7,6 +7,7 @@ import classes from "./CreateTeamForm.module.css";
 import { teamsActions } from "../../store/teams-slice";
 import { getUserData } from "../../util/userInfo";
 import { getToken } from "../../util/auth";
+// import { toast } from "react-toastify";
 
 const CreateTeamForm = ({ onClose }) => {
   const [hasError, setHasEror] = useState(false);
@@ -49,6 +50,11 @@ const CreateTeamForm = ({ onClose }) => {
     // push into state
     dispatch(teamsActions.createNewTeam(newTeam));
     titleRef.current.value = "";
+
+    // toast.success("Team cration success", {
+    //   position: "top-center",
+    //   autoClose: 1000,
+    // });
     onClose();
   };
   return (

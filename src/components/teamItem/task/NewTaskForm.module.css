@@ -32,17 +32,6 @@
   padding-bottom: 0;
 }
 
-/* .task-action button {
-  font-size: 1.3rem;
-  cursor: pointer;
-  border: 1.5px solid var(--primary-color);
-  border-radius: 6px;
-  background-color: var(--primary-color);
-  padding: 0.5rem 0.75rem;
-  color: white;
-  margin-left: 0.75rem;
-} */
-
 .btn-save {
   font-size: 1.3rem;
   cursor: pointer;
