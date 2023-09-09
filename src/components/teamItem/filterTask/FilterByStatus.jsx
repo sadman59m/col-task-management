@@ -4,7 +4,12 @@ import classes from "./FilterByStatus.module.css";
 
 import { useRef, useState } from "react";
 
-const FilterByStatus = ({ onSelect, selectedStatus, onSelectDate }) => {
+const FilterByStatus = ({
+  onSelect,
+  selectedStatus,
+  onSelectDate,
+  dateResetHandler,
+}) => {
   const startDateRef = useRef();
   const endDateRef = useRef();
   const [dateError, setDateError] = useState(false);
@@ -20,7 +25,7 @@ const FilterByStatus = ({ onSelect, selectedStatus, onSelectDate }) => {
     const startDate = startDateRef.current.value;
     const endDate = endDateRef.current.value;
 
-    if (!startDate || !endDate || startDate > endDate) {
+    if (startDate > endDate) {
       setDateError(true);
       return;
     }
@@ -84,6 +89,12 @@ const FilterByStatus = ({ onSelect, selectedStatus, onSelectDate }) => {
 
             <div>
               {dateError && <p className={classes.error}>Enter Correct Date</p>}
+              <button
+                className={classes["date-filter-btn"]}
+                onClick={dateResetHandler}
+              >
+                Reset
+              </button>
               <button className={classes["date-filter-btn"]}>Filter</button>
             </div>
           </form>

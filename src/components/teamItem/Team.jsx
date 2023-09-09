@@ -63,6 +63,12 @@ const Team = ({ team }) => {
     setEndFilterDate(endDate);
   };
 
+  const dateResetHandler = () => {
+    console.log("rest");
+    setStartFilterDate(null);
+    setEndFilterDate(null);
+  };
+
   // filter tasks using the selectedFilteredStatus value by help of setFilterStatus
   let filteredTasks = teamTasks;
   if (filterStatus !== "All") {
@@ -141,6 +147,7 @@ const Team = ({ team }) => {
               selectedStatus={filterStatus}
               onSelect={setFilterStatusHandler}
               onSelectDate={dateFilterHandler}
+              dateResetHandler={dateResetHandler}
             />
           </div>
         </div>
