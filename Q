@@ -1,0 +1,33 @@
+[33m0d69b74[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m Added filbr functionalities
+[33m747470a[m[33m ([m[1;31morigin/add-user-func[m[33m, [m[1;32madd-user-func[m[33m)[m Tolts of things
+[33m65c35c3[m Add member functionality added
+[33m3a4ffe1[m improved ui
+[33m00792fb[m delete team fucntionality and ui update
+[33m26151b7[m ui change
+[33m7bda230[m fixing errors
+[33m2b5e0b0[m[33m ([m[1;32mauth_func[m[33m)[m ui change
+[33m7efb786[m ui update
+[33m0423b5d[m task item design changes
+[33m3853701[m ui change
+[33me2aefd0[m Curd operation on task completed
+[33mc63e388[m Task List completed
+[33m2ce7e9f[m task item initial
+[33mcfb6a7e[m create task fucntionalities
+[33mddf0654[m new task components
+[33mbb539d1[m new task component
+[33m6b3f5c5[m show all member done
+[33maad9737[m update team
+[33m1308139[m single team route handler
+[33me9b319b[m single team page created
+[33m20cd226[m team creation page done
+[33m297137a[m add new teams state added
+[33mf9a7a2f[m modal and new team form created
+[33m4d082c9[m added overlay and create team initial
+[33mda22fc8[m error page added team page added
+[33mead209a[m updated bio edit func
+[33m01cea2f[m update ui for authenticaion
+[33m9278423[m adder initial user profile
+[33m443adb3[m added route check
+[33m0112670[m auth fucntionality completed
+[33mb18d943[m authentication functionalities
+[33md634325[m project setup
