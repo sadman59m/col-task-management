@@ -19,7 +19,7 @@ const HomeComp = () => {
         {token && (
           <>
             <h2>{`Let's get Started`}</h2>
-            <h2>{`Go to teams to manage your teams and tasks`}</h2>
+            <h2>{`Go to My Teams to manage your teams and tasks`}</h2>
           </>
         )}
       </div>

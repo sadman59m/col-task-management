@@ -41,6 +41,8 @@ const Team = ({ team }) => {
   // get team task the same way
   const teamTasks = targetTeam ? targetTeam.tasks : [];
 
+  const creator = targetTeam ? targetTeam.creatorId : "";
+
   const showMembersHandler = () => {
     setShowMembers((prevState) => !prevState);
   };
@@ -77,6 +79,8 @@ const Team = ({ team }) => {
                   >
                     <Members
                       members={teamMembers}
+                      teamId={teamId}
+                      creatorId={creator}
                       onClose={showMembersHandler}
                     />
                   </ModalPrimary>

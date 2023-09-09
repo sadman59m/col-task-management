@@ -37,6 +37,11 @@
   padding: 0.5rem 0.75rem;
   color: white;
   margin-left: 0.75rem;
+  transition: all 0.2s linear;
+}
+
+.btn-save:hover {
+  background: var(--secondary-color);
 }
 
 .btn-cancel {
@@ -48,6 +53,12 @@
   padding: 0.5rem 0.75rem;
   color: var(--primary-color);
   margin-left: 0.75rem;
+  transition: all 0.2s linear;
+}
+
+.btn-cancel:hover {
+  color: var(--secondary-color);
+  background: #ccc;
 }
 
 .error-msg {

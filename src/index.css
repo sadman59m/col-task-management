@@ -1,6 +1,7 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   --primary-color: #06a0c7e7;
+  --secondary-color: rgb(33, 105, 187);
   /* line-height: 1.5;
   font-weight: 400; */
 

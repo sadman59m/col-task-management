@@ -33,70 +33,74 @@ const NewTaskForm = ({
 
   const submitHandler = (e) => {
     e.preventDefault();
-    const taskTitle = titleRef.current.value.trim();
-    const taskDesc = descRef.current.value.trim();
-    const taskDate = dateRef.current.value.trim();
-    const taskPrio = prioRef.current.value.trim();
     const taskStatus = statusRef.current.value.trim();
-
-    // validate input data
-    if (taskTitle.length < 3) {
-      setTitleError(true);
-      return;
-    }
-    setTitleError(false);
-
-    if (taskDesc.length < 5) {
-      setDescError(true);
-      return;
-    }
-    setDescError(false);
-
-    const currentDate = new Date();
-    const today = currentDate.toISOString().split("T")[0];
-
-    if (!taskDate || taskDate < today) {
-      setDateError(true);
-      return;
-    }
-    setDateError(false);
-
-    // if all the validation passed
-
-    // for new task creation
     if (newTaskReference) {
-      const newTaskId = uuidv4();
-      //construct new task object
-      const newTaskItem = {
-        id: newTaskId,
-        teamId: teamId,
-        title: taskTitle,
-        description: taskDesc,
-        dueDate: taskDate,
-        priorityLevel: taskPrio,
-        status: taskStatus,
-      };
+      const taskTitle = titleRef.current.value.trim();
+      const taskDesc = descRef.current.value.trim();
+      const taskDate = dateRef.current.value.trim();
+      const taskPrio = prioRef.current.value.trim();
 
-      // sent the to the redux state to be saved
-      dispatch(teamsActions.addNewTask(newTaskItem));
+      // validate input data
+      if (taskTitle.length < 3) {
+        setTitleError(true);
+        return;
+      }
+      setTitleError(false);
+
+      if (taskDesc.length < 5) {
+        setDescError(true);
+        return;
+      }
+      setDescError(false);
+
+      const currentDate = new Date();
+      const today = currentDate.toISOString().split("T")[0];
+
+      if (!taskDate || taskDate < today) {
+        setDateError(true);
+        return;
+      }
+      setDateError(false);
+
+      // if all the validation passed
+
+      // for new task creation
+      if (newTaskReference) {
+        const newTaskId = uuidv4();
+        //construct new task object
+        const newTaskItem = {
+          id: newTaskId,
+          teamId: teamId,
+          title: taskTitle,
+          description: taskDesc,
+          dueDate: taskDate,
+          priorityLevel: taskPrio,
+          status: taskStatus,
+        };
+
+        // sent the to the redux state to be saved
+        dispatch(teamsActions.addNewTask(newTaskItem));
+      }
     }
     if (updateTaskReference) {
       const updatedTaskItem = {
         id: taskId,
         teamId: teamId,
-        title: taskTitle,
-        description: taskDesc,
-        dueDate: taskDate,
-        priorityLevel: taskPrio,
+        title: title,
+        description: description,
+        dueDate: dueDate,
+        priorityLevel: priority,
         status: taskStatus,
       };
       dispatch(teamsActions.updateTask(updatedTaskItem));
     }
 
     //set form values to emply and close the modal
-    titleRef.current.value = "";
-    descRef.current.value = "";
-    dateRef.current.value = "";
+    if (newTaskReference) {
+      titleRef.current.value = "";
+      descRef.current.value = "";
+      dateRef.current.value = "";
+    }
     onClose();
   };
 
@@ -117,46 +121,57 @@ const NewTaskForm = ({
 
   return (
     <form className={classes["task-form"]} onSubmit={submitHandler}>
-      <div>
-        <label htmlFor="title">Task Title</label>
-        <input
-          id="title"
-          name="title"
-          ref={titleRef}
-          defaultValue={title ? title : null}
-        />
-        {titleError && titleErrorContent}
-      </div>
-      <div>
-        <label htmlFor="description">Task Description</label>
-        <textarea
-          id="description"
-          type=""
-          name="description"
-          ref={descRef}
-          defaultValue={description ? description : null}
-        />
-        {descError && descErrorContent}
-      </div>
-      <div>
-        <label htmlFor="duedate">Due Date</label>
-        <input
-          id="duedate"
-          name="duedate"
-          type={"date"}
-          ref={dateRef}
-          defaultValue={dueDate ? dueDate : null}
-        />
-        {dateError && dateErrorContent}
-      </div>
-      <div>
-        <label htmlFor="priority">Priority Level</label>
-        <select ref={prioRef} defaultValue={priority ? priority : "Low"}>
-          <option value="Low">Low</option>
-          <option value="Medium">Medium</option>
-          <option value="High">High</option>
-        </select>
-      </div>
+      {newTaskReference && (
+        <>
+          <div>
+            <label htmlFor="title">Task Title</label>
+            <input
+              id="title"
+              name="title"
+              ref={titleRef}
+              defaultValue={title ? title : null}
+              readOnly={title ? true : false}
+            />
+            {titleError && titleErrorContent}
+          </div>
+          <div>
+            <label htmlFor="description">Task Description</label>
+            <textarea
+              id="description"
+              type=""
+              name="description"
+              ref={descRef}
+              defaultValue={description ? description : null}
+              readOnly={description ? true : false}
+            />
+            {descError && descErrorContent}
+          </div>
+          <div>
+            <label htmlFor="duedate">Due Date</label>
+            <input
+              id="duedate"
+              name="duedate"
+              type={"date"}
+              ref={dateRef}
+              defaultValue={dueDate ? dueDate : null}
+              readOnly={dueDate ? true : false}
+            />
+            {dateError && dateErrorContent}
+          </div>
+          <div>
+            <label htmlFor="priority">Priority Level</label>
+            <select
+              ref={prioRef}
+              defaultValue={priority ? priority : "Low"}
+              disabled={priority ? true : false}
+            >
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+            </select>
+          </div>
+        </>
+      )}
       <div>
         <label htmlFor="Status">Status</label>
         <select ref={statusRef} defaultValue={status ? status : "Idel"}>

@@ -21,7 +21,7 @@ const MainNav = () => {
                 }
                 end
               >
-                home
+                Home
               </NavLink>
             </li>
             {token && (
@@ -32,7 +32,7 @@ const MainNav = () => {
                     isActive ? classes.active : undefined
                   }
                 >
-                  teams
+                  My Teams
                 </NavLink>
               </li>
             )}

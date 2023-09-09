@@ -35,24 +35,49 @@ const TaskItem = ({
     }
     return;
   };
+
+  let statusColor, isCompleted, colorUderline;
+  if (status === "Idle") {
+    statusColor = classes.red;
+    colorUderline = classes.redUnderline;
+  } else if (status === "In progress") {
+    statusColor = classes.orange;
+    colorUderline = classes.orangeUnderline;
+  } else if (status === "Completed") {
+    statusColor = classes.green;
+    isCompleted = classes.completed;
+    colorUderline = classes.greenUnderline;
+  }
+
+  let prioColor;
+  if (priority === "High") {
+    prioColor = classes.red;
+  } else if (priority === "Medium") {
+    prioColor = classes.orange;
+  } else if (priority === "Low") {
+    prioColor = classes.green;
+  }
+
   return (
-    <li className={classes["taskitem-list"]}>
-      <div className={classes["taskitem-content"]}>
-        <p className={classes["taskitem-content-title"]}>{title}</p>
+    <li className={`${classes["taskitem-list"]} ${colorUderline}`}>
+      <div className={`${classes["taskitem-content"]} ${isCompleted}`}>
+        <p className={`${classes["taskitem-content-title"]} ${statusColor}`}>
+          {title}
+        </p>
         <p className={classes["taskitem-content-description"]}>{description}</p>
       </div>
-      <div className={classes["taskitem-detail"]}>
+      <div className={`${classes["taskitem-detail"]} ${isCompleted}`}>
         <div className={classes["taskitem-detail-content"]}>
           <p>{`Due: `}</p>
           <p className={classes["due-date"]}>{dueDate}</p>
         </div>
         <div className={classes["taskitem-detail-content"]}>
           <p>{`Priority: `}</p>
-          <p className={classes.priority}>{priority}</p>
+          <p className={`${classes.priority} ${prioColor}`}>{priority}</p>
         </div>
         <div className={classes["taskitem-detail-content"]}>
           <p>{`Status: `}</p>
-          <p className={classes.status}>{status}</p>
+          <p className={`${classes.status} ${statusColor}`}>{status}</p>
         </div>
       </div>
       <div className={classes["taskitem-action"]}>
@@ -61,7 +86,7 @@ const TaskItem = ({
             className={classes["update-btn"]}
             onClick={openUpdateTaskHandler}
           >
-            Update Task
+            Update Task Status
           </button>
         )}
         {openUpdateTask && (
@@ -84,7 +109,7 @@ const TaskItem = ({
           </ModalPrimary>
         )}
         <button className={classes["delete-btn"]} onClick={deleteTaskHander}>
-          Delete
+          Delete Task
         </button>
       </div>
     </li>

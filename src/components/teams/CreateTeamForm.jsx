@@ -26,7 +26,7 @@ const CreateTeamForm = ({ onClose }) => {
     //prevent synthetic events
     e.preventDefault();
     const teamTitle = titleRef.current.value;
-    if (teamTitle.trim().length <= 0) {
+    if (teamTitle.trim().length < 5) {
       setHasEror(true);
       return;
     }

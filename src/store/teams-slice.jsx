@@ -71,6 +71,18 @@ const teamsSlice = createSlice({
         state.teams[targetTeamIndex].members.concat(newMemberItem);
       state.changed = true;
     },
+    removeMemberFromTeam(state, action) {
+      const removeMemberIteam = action.payload;
+      const teamId = removeMemberIteam.teamId;
+      const eamil = removeMemberIteam.email;
+      const targetTeamIndex = state.teams.findIndex(
+        (team) => team.id === teamId
+      );
+      state.teams[targetTeamIndex].members = state.teams[
+        targetTeamIndex
+      ].members.filter((member) => member.email !== eamil);
+      state.changed = true;
+    },
     removeTeam(state, action) {
       const teamId = action.payload;
       console.log(teamId);

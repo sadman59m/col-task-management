@@ -35,7 +35,6 @@ const AddMember = ({ onClose, teamId }) => {
     }
   }
 
-  console.log(filteredUsers);
   const handleAddUser = (member) => {
     const newMember = {
       userName: member.userName,

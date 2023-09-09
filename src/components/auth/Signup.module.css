@@ -37,12 +37,13 @@
   color: white;
   margin-left: 0.75rem;
   margin-top: 0.75rem;
+  transition: all 0.2s linear;
+}
+
+.singup-action button:hover {
+  background: var(--secondary-color);
 }
 
 .error-msg {
   color: red;
-}
-
-.success-msg {
-  color: green;
 }
