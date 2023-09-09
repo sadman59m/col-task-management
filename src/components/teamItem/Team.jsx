@@ -11,11 +11,15 @@ import AddMember from "./teamMember/AddMember";
 import TaskList from "./task/TaskList";
 
 import classes from "./NewTeam.module.css";
+import FilterByStatus from "./filterTask/FilterByStatus";
 
 const Team = ({ team }) => {
   const teamId = team.id;
   const [showMembers, setShowMembers] = useState(false);
   const [showAddMembers, setShowAddMembers] = useState(false);
+  const [filterStatus, setFilterStatus] = useState("All");
+  const [startFilterDate, setStartFilterDate] = useState(null);
+  const [endFilterDate, setEndFilterDate] = useState(null);
 
   const stateTeams = useSelector((state) => state.teams);
   const dispatch = useDispatch();
@@ -50,7 +54,25 @@ const Team = ({ team }) => {
     setShowAddMembers((prevState) => !prevState);
   };
 
-  // const showMemberClass = setShowMembers ? classes["showmember-active"] : "";
+  const setFilterStatusHandler = (selectedFilteredStatus) => {
+    setFilterStatus(selectedFilteredStatus);
+  };
+
+  const dateFilterHandler = (startDate, endDate) => {
+    setStartFilterDate(startDate);
+    setEndFilterDate(endDate);
+  };
+
+  // filter tasks using the selectedFilteredStatus value by help of setFilterStatus
+  let filteredTasks = teamTasks;
+  if (filterStatus !== "All") {
+    filteredTasks = teamTasks.filter((task) => task.status === filterStatus);
+  }
+  if (startFilterDate && endFilterDate) {
+    filteredTasks = filteredTasks.filter(
+      (task) => task.dueDate >= startFilterDate && task.dueDate <= endFilterDate
+    );
+  }
 
   return (
     <>
@@ -115,9 +137,14 @@ const Team = ({ team }) => {
           </div>
           <div className={classes.creator}>
             <p>{`Created by: ${team.creatorName}`}</p>
+            <FilterByStatus
+              selectedStatus={filterStatus}
+              onSelect={setFilterStatusHandler}
+              onSelectDate={dateFilterHandler}
+            />
           </div>
         </div>
-        <TaskList tasks={teamTasks} teamId={teamId} />
+        <TaskList tasks={filteredTasks} teamId={teamId} />
       </div>
     </>
   );

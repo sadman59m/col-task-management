@@ -20,11 +20,10 @@ const Members = ({ members, creatorId, teamId, onClose }) => {
     const confirmDelete = window.confirm("Are you sure?");
     if (confirmDelete) {
       dispatch(teamsActions.removeMemberFromTeam(removeMemberItem));
+      if (member.email === token) {
+        navigate("/teams");
+      }
     }
-    if (member.email === token) {
-      navigate("/teams");
-    }
-    return;
   };
   return (
     <>

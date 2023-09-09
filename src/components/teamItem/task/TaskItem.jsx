@@ -37,7 +37,7 @@ const TaskItem = ({
   };
 
   let statusColor, isCompleted, colorUderline;
-  if (status === "Idle") {
+  if (status === "Pending") {
     statusColor = classes.red;
     colorUderline = classes.redUnderline;
   } else if (status === "In progress") {

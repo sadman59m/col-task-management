@@ -175,7 +175,7 @@ const NewTaskForm = ({
       <div>
         <label htmlFor="Status">Status</label>
         <select ref={statusRef} defaultValue={status ? status : "Idel"}>
-          <option value="Idle">Idle</option>
+          <option value="Pending">Pending</option>
           <option value="In progress">In progress</option>
           <option value="Completed">Completed</option>
         </select>
