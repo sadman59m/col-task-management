@@ -56,7 +56,7 @@ export async function action({ request }) {
     userName: sinupData.get("username"),
     email: sinupData.get("email"),
     password: sinupData.get("password"),
-    bio: "",
+    bio: "I'm a new user.",
     proPic: "",
   };
 

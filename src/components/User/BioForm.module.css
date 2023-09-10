@@ -1,0 +1,34 @@
+.bio-form {
+  margin: 1rem 0rem;
+  /* border: 1px solid black; */
+  /* height: 5rem; */
+}
+
+.bio-form textarea {
+  height: 5rem;
+  width: 100%;
+  /* border: 1px solid black; */
+  border-radius: 12px;
+}
+
+.save-btn {
+  margin: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.9rem;
+  background: var(--primary-color);
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  margin: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8rem;
+  background: transparent;
+  border: 1px solid black;
+  border-radius: 6px;
+  color: black;
+  cursor: pointer;
+}

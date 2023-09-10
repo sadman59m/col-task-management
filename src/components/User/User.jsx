@@ -48,11 +48,10 @@ const User = ({ username, email, bio, image }) => {
     <>
       <div className={classes["user-container"]}>
         <div className={classes["profile-info-container"]}>
-          <h1>Profile</h1>
-          <h3>{`Username: ${username}`}</h3>
-          <h3>{`User email: ${email}`}</h3>
-          <div className={classes.bio}>
-            <h3>Bio:</h3>
+          <p className={classes["profile-info-header"]}>{`${username}`}</p>
+          <p className={classes.email}>{`${email}`}</p>
+          <div className={classes["bio-container"]}>
+            <p className={classes["bio-header"]}>Bio</p>
             {isEdit && (
               <BioForm
                 onClose={isEditHandler}
@@ -63,11 +62,16 @@ const User = ({ username, email, bio, image }) => {
               />
             )}
             {!isEdit && (
-              <button onClick={isEditHandler}>{`${
-                bio || bioData ? "edit bio" : "add bio"
-              }`}</button>
+              <button
+                className={classes["bio-btn"]}
+                onClick={isEditHandler}
+              >{`${bio || bioData ? "edit bio" : "add bio"}`}</button>
             )}
-            <p>{bioData ? bioData : bio}</p>
+            {!isEdit && (
+              <p className={classes["bio-content"]}>
+                {bioData ? bioData : bio}
+              </p>
+            )}
           </div>
         </div>
         <div className={classes["profile-pic-container"]}>
