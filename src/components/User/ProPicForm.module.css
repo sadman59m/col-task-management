@@ -1,0 +1,72 @@
+.profile-pic-form {
+  width: 30rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+.form-image {
+  width: 13rem;
+  height: 13rem;
+  object-fit: cover;
+}
+
+.profile-pic-icon {
+  font-size: 10rem;
+  padding: 0.5rem;
+  color: #ccc;
+}
+
+.form-control {
+  margin: 0.75rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.form-action {
+  margin-top: 1rem;
+}
+
+.upload-btn {
+  background: var(--primary-color);
+  color: white;
+  border: 1px solid white;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  margin: 0.25rem 0rem;
+  margin-right: 1rem;
+  padding: 0.75rem 1rem;
+  display: inline;
+}
+
+.upload-btn:hover {
+  background: var(--secondary-color);
+}
+
+.cancel-btn {
+  background: transparent;
+  border: 1px solid black;
+  font-size: 1rem;
+  border-radius: 6px;
+  margin: 0.25rem 0rem;
+  margin-left: 1rem;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  display: inline;
+}
+
+.cancel-btn:hover {
+  background-color: #ccc;
+}
+
+.error {
+  font-size: 0.8rem;
+  color: red;
+  margin: 0.1rem 0rem;
+  text-align: start;
+}

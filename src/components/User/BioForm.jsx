@@ -2,8 +2,9 @@ import { useRef } from "react";
 import { getUserData, setUserData } from "../../util/userInfo";
 
 /* eslint-disable react/prop-types */
-const BioForm = ({ onClose, setBioData, email, bio }) => {
+const BioForm = ({ onClose, setBioData, email, bio, profileUpdated }) => {
   const bioRef = useRef();
+
   const onSubmitHandler = (e) => {
     e.preventDefault();
     const bioData = bioRef.current.value;
@@ -13,11 +14,12 @@ const BioForm = ({ onClose, setBioData, email, bio }) => {
     const userData = getUserData(email);
     const updatedUserData = { ...userData, bio: bioData };
     setUserData(updatedUserData);
+    profileUpdated();
   };
   return (
     <>
       <form onSubmit={onSubmitHandler}>
-        <input
+        <textarea
           ref={bioRef}
           type="text"
           id="bio"

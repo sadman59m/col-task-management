@@ -56,6 +56,8 @@ export async function action({ request }) {
     userName: sinupData.get("username"),
     email: sinupData.get("email"),
     password: sinupData.get("password"),
+    bio: "",
+    proPic: "",
   };
 
   // parse local storage user items to check for user and store new user data

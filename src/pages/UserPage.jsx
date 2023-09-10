@@ -6,11 +6,13 @@ import { getUserData } from "../util/userInfo";
 
 const UserPage = () => {
   const userData = useLoaderData();
+  console.log(userData);
   return (
     <User
       username={userData.userName}
       email={userData.email}
       bio={userData.bio ? userData.bio : ""}
+      image={userData.proPic}
     />
   );
 };
